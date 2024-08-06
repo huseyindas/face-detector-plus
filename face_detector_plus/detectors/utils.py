@@ -284,7 +284,7 @@ class FaceDetectorModels:
             )
         )
         if not osp.exists(model_path):
-            link = f"https://github.com/Saadmairaj/models/releases/download/v0.0.1/{name}"
+            link = f"https://github.com/huseyindas/face-detector-plus/releases/download/v1.0.0/{name}"
             return download_model(link)
 
         return model_path

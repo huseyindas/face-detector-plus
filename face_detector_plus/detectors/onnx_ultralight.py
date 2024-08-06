@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import onnxruntime as ort
-from face_detectors_plus.detectors.utils import BaseModel, predict, FaceDetectorModels
+from face_detector_plus.detectors.utils import BaseModel, predict, FaceDetectorModels
 
 
 class UltralightDetector(BaseModel):

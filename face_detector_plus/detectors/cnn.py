@@ -1,31 +1,34 @@
 import dlib
-from face_detectors_plus.detectors.utils import BaseModel, _rect_to_css
+from face_detector_plus.detectors.utils import BaseModel, _rect_to_css, FaceDetectorModels
 
 
-class HogDetector(BaseModel):
+class CNNDetector(BaseModel):
     """
-    Hog detector is an hight level client for 
-    dlib::get_frontal_face_detector that is fine tuned 
-    by default which is more accurate, optimized and 
-    modular out of the box.
+    CNN detector is an high level client for 
+    dlib::cnn_face_detection_model_v1 that is simpler 
+    and easier to manage
     """
 
-    NAME = "Hog Detector"
+    NAME = "CNN detector"
+    model_path = None
 
-    def __init__(self, convert_color=None, number_of_times_to_upsample=2, confidence=0.5, **kw):
-        """Hog detector constructor. 
+    def __init__(self, convert_color=None,
+                 number_of_times_to_upsample=1, confidence=0.5, **kw):
+        """Convolutional Neural Network (CNN) detector constructor. 
+        This detector will not behave much different if compared to 
+        dlib::cnn_face_detection_model_v1.
 
         Args:
             convert_color (int, optional): Takes OpenCV COLOR codes to convert the images. 
                 Defaults to cv2.COLOR_BGR2RGB.
-            number_of_times_to_upsample (int, optional): Upsamples the image 
-                number_of_times_to_upsample before running the basic detector. By default is 2.
+            number_of_times_to_upsample (int, optional): Up samples the image 
+                number_of_times_to_upsample before running the basic detector. By default is 1.
             confidence (float, optional): Confidence score is used to refrain from making 
                 predictions when it is not above a sufficient threshold. Defaults to 0.5.
             scale (float, optional): Scales the image for faster output (No need to set 
                 this manually, scale will be determined automatically if no value is given)
         """
-        self.scale = kw.get('scale', "0.25D")
+        self.scale = kw.get('scale', 0.25)
         self.confidence = confidence
         self.convert_color = convert_color
         self.number_of_times_to_upsample = number_of_times_to_upsample
@@ -36,9 +39,13 @@ class HogDetector(BaseModel):
         """Internal function, do not call directly.
 
         Setup the model with the configurations"""
-        assert self.scale != None, "Scale is required"
+        self.model_path = FaceDetectorModels.absolute_path(
+            FaceDetectorModels.cnn_mmod_face_detector)
 
-        self.detector = dlib.get_frontal_face_detector()
+        assert self.scale is not None, "Scale is required"
+        assert self.model_path is not None, "Model path is empty"
+
+        self.detector = dlib.cnn_face_detection_model_v1(self.model_path)
         self._setup = True
         return self
 
@@ -47,6 +54,7 @@ class HogDetector(BaseModel):
 
         Args:
             image: Give numpy.array image
+
         Return:
             List[Any, List]: List of faces coordinates"""
         assert getattr(self, '_setup', None) != None, "The model is not setup."
@@ -59,18 +67,10 @@ class HogDetector(BaseModel):
                 scale = 1
         else:
             scale = self.scale
-        image = self._prep_image(image, scale=scale)
-        face_rects, scores, _ = self.detector.run(
-            image, self.number_of_times_to_upsample, -0.35)
-        face_rects = [_rect_to_css(face) for face in face_rects]
 
-        faces = []
-        for face, score in zip(face_rects, scores):
-            if score < 0:
-                score = 1 + score
-            score = min(1, score * 5)  # score correction
-            if score > self.confidence:
-                faces.append(
-                    {'bbox': list(face), 'confidence': score}
-                )
+        image = self._prep_image(image, scale=scale)
+        preprocessed_faces = self.detector(
+            image, self.number_of_times_to_upsample)
+        faces = [{"bbox": _rect_to_css(face.rect), "confidence": face.confidence}
+                 for face in preprocessed_faces if face.confidence > self.confidence]
         return self._scale_back(faces=faces, scale=scale)

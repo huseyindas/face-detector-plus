@@ -1,5 +1,5 @@
 import cv2
-from face_detectors_plus.detectors.utils import BaseModel, find_faces, FaceDetectorModels
+from face_detector_plus.detectors.utils import BaseModel, find_faces, FaceDetectorModels
 
 
 class CaffemodelDetector(BaseModel):
