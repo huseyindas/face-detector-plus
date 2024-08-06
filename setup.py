@@ -9,7 +9,7 @@ def get_long_description(path):
 
 attrs = dict(
     name='face_detector_plus',
-    version="1.0.0",
+    version="1.0.1",
     packages=find_packages(exclude=('test',)),
     long_description=get_long_description('README.md'),
     description='Light weight face detector high-level client with multiple detection techniques.',
