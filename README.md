@@ -1,4 +1,4 @@
-# Face Detectors Plus
+# Face Detector Plus
 
 "A comprehensive Python package that integrates multiple face detection algorithms, offering flexible and efficient solutions for various face recognition applications."
 
@@ -23,28 +23,28 @@
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install [face-detectors](https://pypi.org/project/face-detectors/) with the following command:
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install [face-detector-plus](https://pypi.org/project/face-detector-plus/) with the following command:
 
 ```bash
-pip install face-detectors-plus
+pip install face-detector-plus
 ```
 
 If you would like to get the latest master or branch from github, you could also:
 
 ```bash
-pip install git+https://github.com/huseyindas/face-detectors-plus
+pip install git+https://github.com/huseyindas/face-detector-plus
 ```
 
 Or even select a specific revision _(branch/tag/commit)_:
 
 ```bash
-pip install git+https://github.com/huseyindas/face-detectors-plus@master
+pip install git+https://github.com/huseyindas/face-detector-plus@master
 ```
 
-Similarly, for tag specify [tag](https://github.com/huseyindas/face-detectors-plus/tags) with `@v0.x.x`. For example to download tag v0.1.0 from Git use:
+Similarly, for tag specify [tag](https://github.com/huseyindas/face-detector-plus/tags) with `@v0.x.x`. For example to download tag v0.1.0 from Git use:
 
 ```bash
-pip install git+https://github.com/huseyindas/face-detectors-plus@v0.1.0
+pip install git+https://github.com/huseyindas/face-detector-plus@v0.1.0
 ```
 
 ## Quick usage
@@ -58,8 +58,8 @@ Like said setup and usage is very simple and easy.
 **_Example_**
 
 ```python
-from face_detectors_plus import Ultralight320Detector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import Ultralight320Detector
+from face_detector_plus.utils import annotate_image
 
 detector = Ultralight320Detector()
 
@@ -78,8 +78,8 @@ Caffemodel is very light weight model that uses less resources to perform detect
 
 ```python
 import cv2
-from face_detectors_plus import CaffemodelDetector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import CaffemodelDetector
+from face_detector_plus.utils import annotate_image
 
 vid = cv2.VideoCapture(0)
 detector = CaffemodelDetector()
@@ -140,8 +140,8 @@ CNN (Convolutional Neural Network) might not be a light weight model but it is g
 
 ```python
 import cv2
-from face_detectors_plus import CNNDetector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import CNNDetector
+from face_detector_plus.utils import annotate_image
 
 vid = cv2.VideoCapture(0)
 detector = CNNDetector()
@@ -197,8 +197,8 @@ If you want to detect faster with `HogDetector` and don't care about number of d
 
 ```python
 import cv2
-from face_detectors_plus import HogDetector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import HogDetector
+from face_detector_plus.utils import annotate_image
 
 vid = cv2.VideoCapture(0)
 detector = HogDetector()
@@ -252,8 +252,8 @@ Ultra Light detection model is what the name says, it a very light weight, accur
 
 ```python
 import cv2
-from face_detectors_plus import Ultralight320Detector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import Ultralight320Detector
+from face_detector_plus.utils import annotate_image
 
 vid = cv2.VideoCapture(0)
 detector = Ultralight320Detector()
@@ -310,8 +310,8 @@ This detector will be more accurate than 320 sized ultra light model (`Ultraligh
 
 ```python
 import cv2
-from face_detectors_plus import Ultralight640Detector
-from face_detectors_plus.utils import annotate_image
+from face_detector_plus import Ultralight640Detector
+from face_detector_plus.utils import annotate_image
 
 vid = cv2.VideoCapture(0)
 detector = Ultralight640Detector()
