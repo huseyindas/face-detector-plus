@@ -1,11 +1,6 @@
 # Face Detectors Plus
 
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/46227224/138546601-0c9c1f61-6a91-4376-a599-e0bf2cd73797.gif" />
-</p>
-
-This repo contains various types of face detection techniques. All the face detection techniques are fine tunned and optimized out of the box to work the best with any resolution images and takes no time to get started
+"A comprehensive Python package that integrates multiple face detection algorithms, offering flexible and efficient solutions for various face recognition applications."
 
 **Key features:**
 
@@ -24,8 +19,6 @@ This repo contains various types of face detection techniques. All the face dete
 - Caffemodel detector
 - UltraLight 320 detector
 - UltraLight 640 detector
-
-_( More on the way...)_
 
 
 ## Installation
@@ -78,36 +71,6 @@ image = annotate_image(image, faces, width=3)
 cv2.imshow("view", image)
 cv2.waitKey(100000)
 ```
-
-## Performance
-
-Every detector has different types of features and can be used for different purposes for example detecting only one face we can use hog with `number_of_times_to_upsample=1` or caffemodel, we can also use models but other models like Ultralight models are good for multiple and small face detections.
-
-_(The following is test on MacBook Pro 2.3 GHz Quad-Core Intel Core i5 with 8 GB 2133 MHz LPDDR3)_
-
-| Detector             | IMAGE 1 (ms) | IMAGE 2 (ms) | IMAGE 3 (ms) | IMAGE 4 (ms) |
-| -------------------- | ------------ | ------------ | ------------ | ------------ |
-| Caffe Model          | 0.0334       | 0.0327       | 0.0314       | 0.0344       |
-| CNN                  | 0.5216       | 0.1371       | 0.4339       | 0.2264       |
-| Hog                  | 0.0970       | 0.4521       | 0.0847       | 0.0548       |
-| UltraLight _(320px)_ | **0.0128**   | **0.0203**   | **0.0128**   | **0.0149**   |
-| UltraLight _(640px)_ | 0.0347       | 0.0391       | 0.0430       | 0.0384       |
-
-The below is IMAGE 2 result
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/46227224/138553461-29044143-1328-48f3-968a-6334b12534a0.jpg" width=400/>
-  <img src="https://user-images.githubusercontent.com/46227224/138553446-2cc5285b-e70f-4f32-bbde-fb330d72543c.jpg" width=400/>
-  <img src="https://user-images.githubusercontent.com/46227224/138553453-2a08674e-8b59-4417-9661-ce770665c24a.jpg" width=400/>
-  <img src="https://user-images.githubusercontent.com/46227224/138553432-3687d184-6390-492b-93b8-cc2cc15a1415.jpg" width=400/>
-  <img src="https://user-images.githubusercontent.com/46227224/138553429-681cb9c6-218e-4e84-a852-92374da7c8fa.jpg" width=400/>
-</p>
-
-[View complete comparison](https://github.com/Saadmairaj/face-detectors/tree/main/sample)
-
-## Documentation
-
-Briefly describing face-detectors package that are all the detectors and utility functions.
 
 ### CaffeModel Detector
 
@@ -412,5 +375,3 @@ Syntax: `annotate_image(**options)`
 | `box_rgb`       | RGB color for rectangle to be of. Defaults to (100, 0, 255).                 |
 | `keypoints_rgb` | RGB color for keypoints to be of. Defaults to (150, 0, 255).                 |
 | `width`         | Width of annotations. Defaults to 2                                          |
-
-## [License](https://github.com/Saadmairaj/face-detectors/blob/main/LICENSE)
