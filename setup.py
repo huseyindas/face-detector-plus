@@ -16,7 +16,7 @@ attrs = dict(
     long_description_content_type='text/markdown',
     author="Huseyin Das",
     author_email='hsyndass@gmail.com',
-    url='https://github.com/huseyindas/face-detectors',
+    url='https://github.com/huseyindas/face-detector-plus',
     license='Apache',
     python_requires='>=3.9',
     setup_requires=[
@@ -46,9 +46,9 @@ attrs = dict(
         'License :: OSI Approved :: Apache Software License',
     ],
     project_urls={
-        'Bug Reports': 'https://github.com/huseyindas/face-detectors/issues',
-        'Source': 'https://github.com/huseyindas/face-detectors',
-        'Documentation': 'https://github.com/huseyindas/face-detectors#documentation',
+        'Bug Reports': 'https://github.com/huseyindas/face-detector-plus/issues',
+        'Source': 'https://github.com/huseyindas/face-detector-plus',
+        'Documentation': 'https://github.com/huseyindas/face-detector-plus#documentation',
     },
     keywords=[
         'machine learning',
